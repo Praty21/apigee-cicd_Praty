@@ -15,7 +15,7 @@ pipeline {
         stable_revision = bat(script: 'curl -H "Authorization: Basic $base64encoded" "https://api.enterprise.apigee.com/v1/organizations/pratysin-97213-eval/apis/HR-API/deployments" | jq -r ".environment[0].revision[0].name"', returnStdout: true).trim()
     }
 
-    stages {
+   /* stages {
         stage('Initial-Checks') {
             steps {
                 sendNotifications 'STARTED'
@@ -23,7 +23,7 @@ pipeline {
                 bat "mvn -v"
                 echo "$apigeeUsername"
                 echo "Stable Revision: ${env.stable_revision}"
-        }}  
+        }}  */
         stage('Policy-Code Analysis') {
             steps {
                 bat "npm install -g apigeelint"
