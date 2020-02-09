@@ -12,7 +12,7 @@ pipeline {
 
     environment {
         //getting the current stable/deployed revision...this is used in undeloy.sh in case of failure...
-        stable_revision = sh(script: 'curl -H "Authorization: Basic $base64encoded" "https://api.enterprise.apigee.com/v1/organizations/onlineman477-eval/apis/HR-API/deployments" | jq -r ".environment[0].revision[0].name"', returnStdout: true).trim()
+        stable_revision = sh(script: 'curl -H "Authorization: Basic $base64encoded" "https://api.enterprise.apigee.com/v1/organizations/pratysin-97213-eval/apis/HR-API/deployments" | jq -r ".environment[0].revision[0].name"', returnStdout: true).trim()
     }
 
     stages {
@@ -27,7 +27,7 @@ pipeline {
         stage('Policy-Code Analysis') {
             steps {
                 bat "npm install -g apigeelint"
-                bat "apigeelint -s HR-API/apiproxy/ -f codeframe.js"
+                bat "apigeelint -s C:\apigee-cicd-master\hr-api\apiproxy -f codeframe.js"
             }
         }
         stage('Unit-Test-With-Coverage') {
@@ -59,7 +59,7 @@ pipeline {
                  
                  // deploy only proxy and deploy both proxy and config based on edge.js update
                 //bat "sh && sh deploy.sh"
-                bat "mvn -f HR-API/pom.xml install -Pprod -Dusername=${apigeeUsername} -Dpassword=${apigeePassword} -Dapigee.config.options=update"
+                bat "mvn -f C:\apigee-cicd-master\hr-api\pom.xml install -Pprod -Dusername=pratysin@gmail.com -Dpassword=Qwaszx@123 -Dapigee.config.options=update"
             }
         }
         stage('Integration Tests') {
