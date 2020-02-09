@@ -70,10 +70,10 @@ pipeline {
                         // thought of using them in cucumber oauth feature
                         // bat "sh && sh credentials.sh"
                         bat "cd $WORKSPACE/test/integration && npm install"
-                        bat "cd $WORKSPACE/test/integration && npm test"
+                       /* bat "cd $WORKSPACE/test/integration && npm test" */
                     } catch (e) {
                         //if tests fail, I have used an shell script which has 3 APIs to undeploy, delete current revision & deploy previous stable revision
-                        bat "sh && sh undeploy.sh"
+                        bat "bash undeploy.sh"
                         throw e
                     } finally {
                         // generate cucumber reports in both Test Pass/Fail scenario
