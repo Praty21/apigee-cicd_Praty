@@ -59,7 +59,7 @@ pipeline {
                  
                  // deploy only proxy and deploy both proxy and config based on edge.js update
                 //bat "sh && sh deploy.sh"
-                bat "mvn -f C:/apigee-cicd-master/hr-api/pom.xml install -Pprod -Dusername=pratysin@gmail.com -Dpassword=Qwaszx@123 -Dapigee.config.options=update"
+                bat "mvn -f C:/apigee-cicd-master/hr-api/pom.xml install -Pprod -Dusername=pratysin@gmail.com -Dpassword=Qwaszx@123"
             }
         }
         stage('Integration Tests') {
