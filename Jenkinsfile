@@ -27,7 +27,7 @@ pipeline {
         stage('Policy-Code Analysis') {
             steps {
                 bat "npm install -g apigeelint"
-                bat "apigeelint -s C:\apigee-cicd-master\hr-api\apiproxy -f codeframe.js"
+                bat "apigeelint -s C:/apigee-cicd-master/hr-api/apiproxy -f codeframe.js"
             }
         }
         stage('Unit-Test-With-Coverage') {
@@ -59,7 +59,7 @@ pipeline {
                  
                  // deploy only proxy and deploy both proxy and config based on edge.js update
                 //bat "sh && sh deploy.sh"
-                bat "mvn -f C:\apigee-cicd-master\hr-api\pom.xml install -Pprod -Dusername=pratysin@gmail.com -Dpassword=Qwaszx@123 -Dapigee.config.options=update"
+                bat "mvn -f C:/apigee-cicd-master/hr-api/pom.xml install -Pprod -Dusername=pratysin@gmail.com -Dpassword=Qwaszx@123 -Dapigee.config.options=update"
             }
         }
         stage('Integration Tests') {
